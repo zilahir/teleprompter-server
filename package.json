@@ -27,6 +27,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "node": "^12.8.1",
+    "react-router": "^5.1.2",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
