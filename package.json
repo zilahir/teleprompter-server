@@ -1,22 +1,35 @@
 {
-  "name": "ExpressBoilerplate",
+  "name": "teleprompter-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "socker.io server for teleprompter",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index"
+    "client": "npm run start --prefix ../client",
+    "start": "node index.js",
+    "dev": "concurrently \"npm run start\" \"npm run client\""
   },
-  "author": "Arief Yusron",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zilahir/teleprompter-server.git"
+  },
+  "keywords": [
+    "node",
+    "server",
+    "socker.io"
+  ],
+  "author": "zilahir",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zilahir/teleprompter-server/issues"
+  },
+  "homepage": "https://github.com/zilahir/teleprompter-server#readme",
   "dependencies": {
-    "bcrypt": "^3.0.3",
-    "body-parser": "^1.18.3",
-    "cors": "^2.8.5",
-    "express": "^4.16.4",
-    "express-validator": "^5.3.1",
-    "jsonwebtoken": "^8.4.0",
-    "nodemon": "^1.18.9",
-    "socket.io": "^2.2.0"
+    "express": "^4.17.1",
+    "node": "^13.6.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0"
   }
 }
