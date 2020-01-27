@@ -26,7 +26,7 @@
   "homepage": "https://github.com/zilahir/teleprompter-server#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "node": "^13.6.0",
+    "node": "^12.8.1",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
