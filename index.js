@@ -15,3 +15,9 @@ io.on("connection", socket => {
         io.emit("isPlaying", msg);
     });
 });
+
+app.get('/', function (req, res) {
+    res.send({
+        isSuccess: true,
+    })
+  })
