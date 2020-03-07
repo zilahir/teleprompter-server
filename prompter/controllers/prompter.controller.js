@@ -10,7 +10,8 @@ exports.insert = (req, res) => {
 }
 
 exports.getAllPrompterByUserId = (req, res) => {
-    PrompterModel.getAllByUserId(req.body.userId)
+    console.debug(req.params)
+    PrompterModel.getAllByUserId(req.params.userId)
         .then(result => {
             res.status(200).send(result)
         })
