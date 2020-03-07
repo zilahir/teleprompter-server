@@ -6,6 +6,7 @@ const propmpterSchema = new Schema({
     text: String,
     meta: Schema.Types.Mixed,
     userId: String,
+    projectName: String,
 })
 
 propmpterSchema.set('toJSON', {
