@@ -8,6 +8,10 @@ const propmpterSchema = new Schema({
     userId: String,
 })
 
+propmpterSchema.set('toJSON', {
+    virtuals: true
+});
+
 propmpterSchema.findById = function (cb) {
     return this.model('Prompter').find({id: this.id}, cb);
 };
@@ -23,4 +27,8 @@ exports.inserPrompter = prompterData => {
     return prompter.save()
 }
 
-// exports.getAllByUserId = 
+exports.getAllByUserId = userId => {
+    return Prompter.find({
+        userId
+    })
+}

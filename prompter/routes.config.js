@@ -5,4 +5,7 @@ exports.routesConfig = function(app) {
     app.post('/prompter', [
         PromptController.insert
     ])
+    app.get('/allprompterbyuserid', [
+        PromptController.getAllPrompterByUserId
+    ])
 }
