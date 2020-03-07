@@ -26,11 +26,16 @@
   },
   "homepage": "https://github.com/zilahir/teleprompter-server#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.3",
     "node": "^12.8.1",
     "nodemon": "^2.0.2",
     "react-router": "^5.1.2",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "uuid": "^7.0.2"
   },
   "devDependencies": {
     "concurrently": "^5.1.0"
