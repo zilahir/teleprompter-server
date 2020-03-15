@@ -68,7 +68,6 @@ exports.patchUser = (id, userData) => {
             });
         });
     })
-
 };
 
 exports.removeById = (userId) => {
