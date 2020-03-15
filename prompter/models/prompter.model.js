@@ -52,15 +52,13 @@ exports.deletePrompter = idToTel => {
 exports.patchPrompter = (id, prompterData) => {
     return new Promise ((resolve, reject) => {
         Prompter.findById(id, function (err, prompter) {
-            if(err) {
-                reject(err)
-            }
+            if (err) reject(err);
             for (let i in prompterData) {
                 prompter[i] = prompterData[i]
             }
-            prompter.save(function (err, updatedUser) {
+            prompter.save(function (err, updatedPrompter) {
                 if (err) return reject(err)
-                resolve(updatedUser)
+                resolve(updatedPrompter)
             });
         });
     })
