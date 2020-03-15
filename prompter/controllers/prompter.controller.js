@@ -23,3 +23,10 @@ exports.removePrompter = (req, res) => {
             res.status(200).send(result)
         })
 }
+
+exports.modifyPrompter = (req, res) => {
+    PrompterModel.patchPrompter(req.params.prompterId)
+        .then(result => {
+            res.status(200).send(result)
+        })
+}
