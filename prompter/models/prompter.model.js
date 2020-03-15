@@ -33,3 +33,15 @@ exports.getAllByUserId = userId => {
         userId
     })
 }
+
+exports.deletePrompter = idToTel => {
+    return new Promise((resolve, reject) => {
+        Prompter.remove({_id: idToTel}, (err) => {
+            if (err) {
+                reject(err)
+            } else {
+                resolve(err)
+            }
+        })
+    })
+}

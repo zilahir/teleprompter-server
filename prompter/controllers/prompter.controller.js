@@ -16,3 +16,10 @@ exports.getAllPrompterByUserId = (req, res) => {
             res.status(200).send(result)
         })
 }
+
+exports.removePrompter = (req, res) => {
+    PrompterModel.deletePrompter(req.params.prompterId)
+        .then(result => {
+            res.status(200).send(result)
+        })
+}

@@ -8,4 +8,7 @@ exports.routesConfig = function(app) {
     app.get('/allprompterbyuserid/:userId', [
         PromptController.getAllPrompterByUserId
     ])
+    app.delete('/prompter/:prompterId', [
+        PromptController.removePrompter
+    ])
 }
