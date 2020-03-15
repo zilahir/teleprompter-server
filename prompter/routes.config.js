@@ -11,4 +11,7 @@ exports.routesConfig = function(app) {
     app.delete('/prompter/:prompterId', [
         PromptController.removePrompter
     ])
+    app.patch('/prompter/:prompterId', [
+        PromptController.modifyPrompter
+    ])
 }
