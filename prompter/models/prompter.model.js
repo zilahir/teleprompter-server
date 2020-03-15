@@ -2,7 +2,7 @@ const mongoose = require('../../services/mongoose.service').mongoose;
 const Schema = mongoose.Schema;
 
 const propmpterSchema = new Schema({
-    id: String,
+    slug: String,
     text: String,
     meta: Schema.Types.Mixed,
     userId: String,
@@ -40,7 +40,10 @@ exports.deletePrompter = idToTel => {
             if (err) {
                 reject(err)
             } else {
-                resolve(err)
+                resolve({
+                    isSuccess: true,
+                    idToTel,
+                })
             }
         })
     })
