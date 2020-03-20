@@ -42,7 +42,7 @@ io.on("connection", socket => {
 
 app.get('/', function (req, res) {
     res.send({
-        isSuccess: false,
+        isSuccess: true,
         mongoUrl: process.env.MONGOURL,
     })
 })
