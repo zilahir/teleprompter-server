@@ -34,9 +34,9 @@ server.listen(PORT, () => console.log(`Listen on *: ${PORT}`));
 io.on("connection", socket => {
     const { id } = socket.client;
     console.log(`User connected: ${id}`);
-    socket.on("isPlaying", msg => {
-        console.log(`${id} user isPlaying: ${msg}`);
-        io.emit("isPlaying", msg);
+    socket.on("isPlaying", ({prompterId, isPlaying}) => {
+        console.log(`${id}: prompterId ${prompterId} isPlaying: ${isPlaying}`);
+        io.emit("isPlaying", isPlaying);
     });
 });
 
