@@ -29,6 +29,11 @@ exports.inserPrompter = prompterData => {
     return prompter.save()
 }
 
+exports.inserPrompterWithoutAuth = prompterData => {
+    const prompter = new PrompterNoAuth(prompterData)
+    return prompter.save()
+}
+
 exports.getAllByUserId = userId => {
     return Prompter.find({
         userId

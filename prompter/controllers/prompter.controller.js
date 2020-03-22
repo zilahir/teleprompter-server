@@ -9,6 +9,15 @@ exports.insert = (req, res) => {
         })
 }
 
+exports.insertWithoutAuth = (req, res) => {
+    PrompterModel.inserPrompterWithoutAuth(req.body)
+        .then(result => {
+            res.status(200).send({
+                id: result._id,
+            })
+        })
+}
+
 exports.getAllPrompterByUserId = (req, res) => {
     PrompterModel.getAllByUserId(req.params.userId)
         .then(result => {
