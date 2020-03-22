@@ -36,7 +36,7 @@ io.on("connection", socket => {
     console.log(`User connected: ${id}`);
     socket.on("isPlaying", ({prompterId, isPlaying}) => {
         console.log(`${id}: prompterId ${prompterId} isPlaying: ${isPlaying}`);
-        io.emit("isPlaying", isPlaying);
+        io.emit("isPlaying", { prompterId, isPlaying });
     });
 });
 

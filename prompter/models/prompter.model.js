@@ -22,6 +22,7 @@ propmpterSchema.findByUserId = function (cb) {
 };
 
 const Prompter = mongoose.model('Prompter', propmpterSchema)
+const PrompterNoAuth = mongoose.model('PrompterNoAuth', propmpterSchema)
 
 exports.inserPrompter = prompterData => {
     const prompter = new Prompter(prompterData)
