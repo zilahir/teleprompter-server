@@ -40,6 +40,13 @@ io.on("connection", socket => {
     });
 });
 
+io.sockets.on('connection', function(socket) {
+    socket.on('room', function(room) {
+      socket.join(room);
+      console.debug('room', room)
+    });
+  });
+
 app.get('/', function (req, res) {
     res.send({
         isSuccess: true,
