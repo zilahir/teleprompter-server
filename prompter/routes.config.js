@@ -8,6 +8,9 @@ exports.routesConfig = function(app) {
     app.post('/prompternoauth', [
         PromptController.insertWithoutAuth
     ])
+    app.patch('/prompternoauth/:slug', [
+        PromptController.modifyPrompterNoAuth
+    ])
     app.get('/allprompterbyuserid/:userId', [
         PromptController.getAllPrompterByUserId
     ])

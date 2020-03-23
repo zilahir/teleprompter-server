@@ -69,3 +69,18 @@ exports.patchPrompter = (id, prompterData) => {
         });
     })
 };
+
+exports.patchPrompterNoAuth = (id, prompterData) => {
+    return new Promise ((resolve, reject) => {
+        PrompterNoAuth.findOne({slug: id}, function (err, prompter) {
+            if (err) reject(err);
+            for (let i in prompterData) {
+                prompter[i] = prompterData[i]
+            }
+            prompter.save(function (err, updatedPrompter) {
+                if (err) return reject(err)
+                resolve(updatedPrompter)
+            });
+        });
+    })
+};

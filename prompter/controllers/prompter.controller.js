@@ -38,3 +38,11 @@ exports.modifyPrompter = (req, res) => {
             res.status(200).send(result)
         })
 }
+
+exports.modifyPrompterNoAuth = (req, res) => {
+    PrompterModel.patchPrompterNoAuth(req.params.slug, req.body)
+        .then(result => {
+            res.status(200).send(result)
+        })
+}
+
