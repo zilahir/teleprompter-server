@@ -26,7 +26,10 @@ exports.isPasswordAndUserMatch = (req, res, next) => {
     UserModel.findByEmail(req.body.email)
         .then((user)=>{
             if(!user[0]){
-                res.status(404).send({});
+                res.status(200).send({
+                    isSuccess: false,
+                    errors: 'No user with this email',
+                });
             }else{
                 let passwordFields = user[0].password.split('$');
                 let salt = passwordFields[0];
@@ -41,7 +44,10 @@ exports.isPasswordAndUserMatch = (req, res, next) => {
                     };
                     return next();
                 } else {
-                    return res.status(400).send({errors: ['Invalid e-mail or password']});
+                    return res.status(200).send({
+                        isSuccess: false, 
+                        errors: 'Invalid e-mail or password'
+                    });
                 }
             }
         });
