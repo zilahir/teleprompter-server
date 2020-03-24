@@ -38,6 +38,13 @@ io.on("connection", socket => {
         console.log(`${id}: prompterId ${prompterId} isPlaying: ${isPlaying}`);
         io.emit("isPlaying", { prompterId, isPlaying });
     });
+
+    socket.on("incSpeed", prompterId => {
+        io.emit("incSpeed", prompterId);
+    });
+    socket.on("decSpeed", prompterId => {
+        io.emit("decSpeed", prompterId);
+    });
 });
 
 io.sockets.on('connection', function(socket) {
