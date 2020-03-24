@@ -28,7 +28,8 @@ exports.isPasswordAndUserMatch = (req, res, next) => {
             if(!user[0]){
                 res.status(200).send({
                     isSuccess: false,
-                    errors: 'No user with this email',
+                    error: 'No user with this email',
+                    reason: 404,
                 });
             }else{
                 let passwordFields = user[0].password.split('$');
@@ -46,7 +47,8 @@ exports.isPasswordAndUserMatch = (req, res, next) => {
                 } else {
                     return res.status(200).send({
                         isSuccess: false, 
-                        errors: 'Invalid e-mail or password'
+                        error: 'Invalid e-mail or password',
+                        reason: 401,
                     });
                 }
             }

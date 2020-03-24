@@ -16,7 +16,8 @@ exports.login = (req, res) => {
         res.status(201).send({
             accessToken: token,
             refreshToken: refresh_token,
-            userId: req.body.userId
+            userId: req.body.userId,
+            isSuccess: true,
         });
     } catch (err) {
         res.status(500).send({errors: err});
