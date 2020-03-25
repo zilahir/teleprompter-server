@@ -40,9 +40,11 @@ io.on("connection", socket => {
     });
 
     socket.on("incSpeed", prompterId => {
+        console.debug("incSpeed", incSpeed)
         io.emit("incSpeed", prompterId);
     });
     socket.on("decSpeed", prompterId => {
+        console.debug("decSpeed", prompterId)
         io.emit("decSpeed", prompterId);
     });
 });
