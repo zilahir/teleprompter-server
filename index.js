@@ -40,12 +40,23 @@ io.on("connection", socket => {
     });
 
     socket.on("incSpeed", prompterId => {
-        console.debug("incSpeed", incSpeed)
+        console.debug("incSpeed", prompterId)
         io.emit("incSpeed", prompterId);
     });
+
     socket.on("decSpeed", prompterId => {
         console.debug("decSpeed", prompterId)
         io.emit("decSpeed", prompterId);
+    });
+
+    socket.on("jumpUp", prompterId => {
+        console.debug("jumpUp", prompterId)
+        io.emit("jumpUp", prompterId);
+    });
+
+    socket.on("jumpDown", prompterId => {
+        console.debug("jumpDown", prompterId)
+        io.emit("jumpDown", prompterId);
     });
 });
 
