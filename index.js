@@ -58,6 +58,11 @@ io.on("connection", socket => {
         console.debug("jumpDown", prompterId)
         io.emit("jumpDown", prompterId);
     });
+
+    socket.on("updatePrompter", updatedPrompter => {
+        console.debug("updatedPrompter", updatedPrompter)
+        io.emit("updatePrompter", updatedPrompter);
+    });
 });
 
 io.sockets.on('connection', function(socket) {
