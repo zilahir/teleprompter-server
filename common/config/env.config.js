@@ -4,6 +4,7 @@ module.exports = {
     "apiEndpoint": "http://localhost:3600",
     "jwt_secret": "myS33!!creeeT",
     "jwt_expiration_in_seconds": 36000,
+    "jwt_expiration_pw_reset": 1800,
     "environment": "dev",
     "permissionLevels": {
         "NORMAL_USER": 1,
