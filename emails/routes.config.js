@@ -3,17 +3,15 @@ const hbs = require('nodemailer-express-handlebars');
 const smtpTransport = MailConfig.SMTPTransport;
 
 exports.routesConfig = function (app) { 
-  app.get('/email/template', (req, res, next) => {
+  app.get('/email/password', (req, res, next) => {
     MailConfig.ViewOption(smtpTransport,hbs);
     const HelperOptions = {
-      from: '"Tariqul islam" <tariqul.islam.rony@gmail.com>',
-      to: 'tariqul@itconquest.com',
-      subject: 'Hellow world!',
-      template: 'test',
+      from: '"prompter.me@noreply" <info@prompter.me>',
+      to: 'zilahi@gmail.com',
+      subject: 'demo',
+      template: 'forgotten_pw',
       context: {
-        name:"tariqul_islam",
-        email: "tariqul.islam.rony@gmail.com",
-        address: "52, Kadamtola Shubag dhaka"
+        test:"test",
       }
     };
     smtpTransport.sendMail(HelperOptions, (error,info) => {
