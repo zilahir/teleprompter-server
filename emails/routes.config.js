@@ -19,9 +19,10 @@ exports.routesConfig = function (app) {
         console.log(error);
         res.json(error);
       }
-      console.log("email is send");
-      console.log(info);
-      res.json(info)
+      res.json({
+        isSuccess: true,
+        ...info,
+      })
     });
   });
  }
