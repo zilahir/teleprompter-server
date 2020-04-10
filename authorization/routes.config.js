@@ -15,4 +15,7 @@ exports.routesConfig = function (app) {
         AuthValidationMiddleware.validRefreshNeeded,
         AuthorizationController.login
     ]);
+    app.post('/auth/checkpassword', [
+        VerifyUserMiddleware.isPasswordAndUserMatch,
+    ])
 };
