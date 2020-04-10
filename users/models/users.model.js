@@ -21,7 +21,6 @@ userSchema.findById = function (cb) {
 
 const User = mongoose.model('Users', userSchema);
 
-
 exports.findByEmail = (email) => {
     return User.find({email: email});
 };
@@ -87,3 +86,10 @@ const passwordRecoverySchema = new Schema({
     isUsed: false,
     expiresAt: new Date().setMinutes(new Date().getMinutes() + 30)
 })
+
+const PasswordRecovery = mongoose.model('PasswordRecovery', passwordRecoverySchema);
+
+exports.createNewPasswordRecoverx = (passwordRecovery) => {
+    const newPwRecovery = new PasswordRecovery(passwordRecovery);
+    return newPwRecovery.save();
+};
