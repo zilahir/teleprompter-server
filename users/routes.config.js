@@ -24,4 +24,7 @@ exports.routesConfig = function (app) {
         ValidationMiddleware.validJWTNeeded,
         UsersController.removeById
     ]);
+    app.get('/users/passwordrecovery', [
+        UsersController.createPasswordRecovery
+    ])
 };

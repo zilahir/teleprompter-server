@@ -82,3 +82,8 @@ exports.removeById = (userId) => {
     });
 };
 
+const passwordRecoverySchema = new Schema({
+    email: String,
+    isUsed: false,
+    expiresAt: new Date().setMinutes(new Date().getMinutes() + 30)
+})
