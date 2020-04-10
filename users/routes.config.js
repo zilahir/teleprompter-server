@@ -30,4 +30,10 @@ exports.routesConfig = function (app) {
     app.patch('/resetpassword', [
         UsersController.patchPasswordRecovery,
     ])
+    app.get('/passwordrecovery/:slug', [
+        UsersController.getPasswordRecovery
+    ])
+    app.patch('/resetpassword/:userId', [
+        UsersController.patchById
+    ]);
 };

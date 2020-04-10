@@ -109,3 +109,14 @@ exports.setPasswordRecoveryToUsed = slug => {
         })
     })
 }
+
+exports.findPasswordRecovery = slug => {
+    return new Promise((resolve, reject) => {
+        PasswordRecovery.findOne({
+            slug
+        }, function(err, passwordRecovery) {
+            if(err) reject(err)
+            resolve(passwordRecovery)
+        })
+    })
+}

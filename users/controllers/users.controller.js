@@ -80,3 +80,11 @@ exports.createPasswordRecovery = (req, res) => {
         })
     })
 }
+
+exports.getPasswordRecovery = (req, res) => {
+    UserModel.findPasswordRecovery(req.params.slug).then(result => {
+        res.status(200).send(
+            result
+        )
+    })
+}
