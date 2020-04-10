@@ -96,14 +96,16 @@ exports.createNewPasswordRecovery = (passwordRecovery) => {
 };
 
 exports.setPasswordRecoveryToUsed = slug => {
-    PasswordRecovery.findOne({
-        slug,
-    }, function(err, passwordRecovery) {
-        if(err) reject(err);
-        passwordRecovery.isUsed = true
-        passwordRecovery.save(function(err, updatedPasswordRecovery) {
-            if (err) return reject(err)
-            resolve(updatedPasswordRecovery)
+    return new Promise((resolve, reject) => {
+        PasswordRecovery.findOne({
+            slug,
+        }, function(err, passwordRecovery) {
+            if(err) reject(err);
+            passwordRecovery.isUsed = true
+            passwordRecovery.save(function(err, updatedPasswordRecovery) {
+                if (err) return reject(err)
+                resolve(updatedPasswordRecovery)
+            })
         })
     })
 }

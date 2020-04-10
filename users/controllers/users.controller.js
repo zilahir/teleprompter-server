@@ -59,7 +59,7 @@ exports.removeById = (req, res) => {
 };
 
 exports.patchPasswordRecovery = (req, res) => {
-    console.debug('req', req)
+    console.log('req', req)
     UserModel.setPasswordRecoveryToUsed(req.body.slug)
         .then(result => {
             res.status(200).send({
