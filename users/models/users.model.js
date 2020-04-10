@@ -82,14 +82,28 @@ exports.removeById = (userId) => {
 };
 
 const passwordRecoverySchema = new Schema({
+    slug: String,
     email: String,
-    isUsed: false,
-    expiresAt: new Date().setMinutes(new Date().getMinutes() + 30)
+    isUsed: Boolean,
+    expiresAt: String
 })
 
 const PasswordRecovery = mongoose.model('PasswordRecovery', passwordRecoverySchema);
 
-exports.createNewPasswordRecoverx = (passwordRecovery) => {
+exports.createNewPasswordRecovery = (passwordRecovery) => {
     const newPwRecovery = new PasswordRecovery(passwordRecovery);
     return newPwRecovery.save();
 };
+
+exports.setPasswordRecoveryToUsed = slug => {
+    PasswordRecovery.findOne({
+        slug,
+    }, function(err, passwordRecovery) {
+        if(err) reject(err);
+        passwordRecovery.isUsed = true
+        passwordRecovery.save(function(err, updatedPasswordRecovery) {
+            if (err) return reject(err)
+            resolve(updatedPasswordRecovery)
+        })
+    })
+}

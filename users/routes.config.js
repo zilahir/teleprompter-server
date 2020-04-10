@@ -24,7 +24,10 @@ exports.routesConfig = function (app) {
         ValidationMiddleware.validJWTNeeded,
         UsersController.removeById
     ]);
-    app.get('/users/passwordrecovery', [
+    app.post('/users/passwordrecovery', [
         UsersController.createPasswordRecovery
+    ])
+    app.patch('/users/passwordrecovery', [
+        UsersController.patchPasswordRecovery,
     ])
 };

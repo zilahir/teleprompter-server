@@ -51,9 +51,32 @@ exports.patchById = (req, res) => {
 
 exports.removeById = (req, res) => {
     UserModel.removeById(req.params.userId)
-        .then((result)=>{
+        .then((result) => {
             res.status(200).send({
                 success: true,
             });
         });
 };
+
+exports.patchPasswordRecovery = (req, res) => {
+    console.debug('req', req)
+    UserModel.setPasswordRecoveryToUsed(req.body.slug)
+        .then(result => {
+            res.status(200).send({
+                success: true,
+            })
+        })
+}
+
+exports.createPasswordRecovery = (req, res) => {
+    UserModel.createNewPasswordRecovery({
+        email: req.body.email,
+        slug: req.body.slug,
+        isUsed: false,
+        expiresAt: new Date().setMinutes(new Date().getMinutes() + 30)
+    }).then(result => {
+        res.status(200).send({
+            success: true
+        })
+    })
+}
