@@ -11,7 +11,7 @@ exports.routesConfig = function (app) {
     }
     const HelperOptions = {
       from: '"prompter.me@noreply" <info@prompter.me>',
-      to: 'zilahi@gmail.com',
+      to: req.body.username,
       subject: 'demo',
       template: 'forgotten_pw',
       context: {

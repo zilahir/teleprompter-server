@@ -68,6 +68,20 @@ exports.patchPasswordRecovery = (req, res) => {
         })
 }
 
+exports.patchByEmail = (req, res) => {
+    if (req.body.password) {
+        let salt = crypto.randomBytes(16).toString('base64');
+        let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest("base64");
+        req.body.password = salt + "$" + hash;
+    }
+    UserModel.resetPassword(req.params.email, req.body.password)
+        .then(result => {
+            res.status(200).send({
+                success: true,
+            })
+        })
+}
+
 exports.createPasswordRecovery = (req, res) => {
     UserModel.createNewPasswordRecovery({
         email: req.body.email,

@@ -120,3 +120,18 @@ exports.findPasswordRecovery = slug => {
         })
     })
 }
+
+exports.resetPassword = (email, password) => {
+    return new Promise((resolve, reject) => {
+        User.findOne({
+            email,
+        }, function (err, user) {
+            if (err) reject(err);
+            user.password = password
+            user.save(function (err, updatedUser) {
+                if (err) return reject(err);
+                resolve(updatedUser);
+            });
+        });
+    })
+};

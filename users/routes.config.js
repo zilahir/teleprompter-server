@@ -33,8 +33,8 @@ exports.routesConfig = function (app) {
     app.get('/passwordrecovery/:slug', [
         UsersController.getPasswordRecovery
     ])
-    app.patch('/resetpassword/:userId', [
+    app.patch('/resetpassword/:email', [
         ValidationMiddleware.validJWTNeeded,
-        UsersController.patchById
+        UsersController.patchByEmail
     ]);
 };
