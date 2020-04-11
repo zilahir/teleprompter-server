@@ -27,14 +27,14 @@ exports.routesConfig = function (app) {
     app.post('/passwordrecovery', [
         UsersController.createPasswordRecovery
     ])
-    app.patch('/resetpassword', [
+    app.patch('/passwordrecovery/:slug', [
         UsersController.patchPasswordRecovery,
     ])
     app.get('/passwordrecovery/:slug', [
         UsersController.getPasswordRecovery
     ])
-    app.patch('/resetpassword/:userId', [
+    app.patch('/resetpassword/:email', [
         ValidationMiddleware.validJWTNeeded,
-        UsersController.patchById
+        UsersController.patchByEmail
     ]);
 };

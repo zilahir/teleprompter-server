@@ -59,8 +59,21 @@ exports.removeById = (req, res) => {
 };
 
 exports.patchPasswordRecovery = (req, res) => {
-    console.log('req', req)
-    UserModel.setPasswordRecoveryToUsed(req.body.slug)
+    UserModel.setPasswordRecoveryToUsed(req.params.slug)
+        .then(result => {
+            res.status(200).send({
+                success: true,
+            })
+        })
+}
+
+exports.patchByEmail = (req, res) => {
+    if (req.body.password) {
+        let salt = crypto.randomBytes(16).toString('base64');
+        let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest("base64");
+        req.body.password = salt + "$" + hash;
+    }
+    UserModel.resetPassword(req.params.email, req.body.password)
         .then(result => {
             res.status(200).send({
                 success: true,
