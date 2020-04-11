@@ -16,6 +16,7 @@ exports.login = (req, res) => {
             accessToken: token,
             refreshToken: refresh_token,
             userId: req.body.userId,
+            email: req.body.email,
             isSuccess: true,
         });
     } catch (err) {
