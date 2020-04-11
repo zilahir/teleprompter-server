@@ -6,7 +6,6 @@ exports.routesConfig = function (app) {
   app.post('/email/password', (req, res, next) => {
     MailConfig.ViewOption(smtpTransport,hbs);
     const recoveryObject = {
-      name: req.body.username,
       token: req.body.token,
       slug: req.body.slug
     }
@@ -16,7 +15,6 @@ exports.routesConfig = function (app) {
       subject: 'demo',
       template: 'forgotten_pw',
       context: {
-        name: recoveryObject.name,
         slug: recoveryObject.slug,
         token: recoveryObject.token,
       }
