@@ -12,7 +12,6 @@ exports.login = (req, res) => {
         let token = jwt.sign(req.body, jwtSecret);
         let b = new Buffer(hash);
         let refresh_token = b.toString('base64');
-        console.debug('req', req.body)
         res.status(201).send({
             accessToken: token,
             refreshToken: refresh_token,
@@ -40,3 +39,9 @@ exports.refresh_token = (req, res) => {
         res.status(500).send({errors: err});
     }
 };
+
+exports.checkPassword = (req, res) => {
+    res.status(200).send({
+        isSuccess: true
+    })
+}
