@@ -24,9 +24,11 @@ exports.login = (req, res) => {
     }
 };
 
-exports.createJWTtoken = req => {
+exports.createJWTtoken = (req, res) => {
     const token = jwt.sign(req.body, jwtSecret);
-    return token
+    res.status(200).send({
+        token
+    })
 }
 
 exports.refresh_token = (req, res) => {

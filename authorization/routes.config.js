@@ -18,4 +18,7 @@ exports.routesConfig = function (app) {
     app.post('/auth/checkpassword', [
         VerifyUserMiddleware.isPasswordAndUserMatch,
     ])
+    app.post('/auth/token', [
+        AuthorizationController.createJWTtoken
+    ])
 };
