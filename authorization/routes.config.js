@@ -16,6 +16,7 @@ exports.routesConfig = function (app) {
         AuthorizationController.login
     ]);
     app.post('/auth/checkpassword', [
+        VerifyUserMiddleware.hasAuthValidFields,
         VerifyUserMiddleware.isPasswordAndUserMatch,
         AuthorizationController.checkPassword,
     ])

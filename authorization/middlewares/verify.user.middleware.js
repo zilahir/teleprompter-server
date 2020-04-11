@@ -13,7 +13,10 @@ exports.hasAuthValidFields = (req, res, next) => {
         }
 
         if (errors.length) {
-            return res.status(400).send({errors: errors.join(',')});
+            return res.status(200).send({
+                errors: errors.join(','),
+                isSuccess: false,
+            });
         } else {
             return next();
         }
