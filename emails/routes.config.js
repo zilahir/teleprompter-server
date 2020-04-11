@@ -7,7 +7,8 @@ exports.routesConfig = function (app) {
     MailConfig.ViewOption(smtpTransport,hbs);
     const recoveryObject = {
       name: req.body.username,
-      newPassword: req.body.newPassword
+      token: req.body.token,
+      slug: req.body.slug
     }
     const HelperOptions = {
       from: '"prompter.me@noreply" <info@prompter.me>',
@@ -16,7 +17,8 @@ exports.routesConfig = function (app) {
       template: 'forgotten_pw',
       context: {
         name: recoveryObject.name,
-        newPassword: recoveryObject.newPassword
+        slug: recoveryObject.slug,
+        token: recoveryObject.token,
       }
     };
     smtpTransport.sendMail(HelperOptions, (error,info) => {

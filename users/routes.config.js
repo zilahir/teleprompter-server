@@ -34,6 +34,7 @@ exports.routesConfig = function (app) {
         UsersController.getPasswordRecovery
     ])
     app.patch('/resetpassword/:userId', [
+        ValidationMiddleware.validJWTNeeded,
         UsersController.patchById
     ]);
 };
