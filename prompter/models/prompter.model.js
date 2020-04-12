@@ -75,7 +75,9 @@ exports.findByPrompterId = slug => {
 
 exports.patchPrompter = (id, prompterData) => {
     return new Promise ((resolve, reject) => {
-        Prompter.findById(id, function (err, prompter) {
+        Prompter.findOne({
+            slug: prompterData.slug,
+        }, function (err, prompter) {
             if (err) reject(err);
             for (let i in prompterData) {
                 prompter[i] = prompterData[i]
