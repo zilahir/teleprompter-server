@@ -20,4 +20,7 @@ exports.routesConfig = function(app) {
     app.patch('/prompter/:prompterId', [
         PromptController.modifyPrompter
     ])
+    app.get('/prompter/:prompterId', [
+        PromptController.getPrompterBySlug
+    ])
 }

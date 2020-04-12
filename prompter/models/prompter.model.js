@@ -55,6 +55,17 @@ exports.deletePrompter = idToTel => {
     })
 }
 
+exports.findByPrompterId = slug => {
+    return new Promise((resolve, reject) => {
+        Prompter.findOne({
+            slug
+        }, function(err, prompter) {
+            if(err) reject(err)
+            resolve(prompter)
+        })
+    })
+}
+
 exports.patchPrompter = (id, prompterData) => {
     return new Promise ((resolve, reject) => {
         Prompter.findById(id, function (err, prompter) {
