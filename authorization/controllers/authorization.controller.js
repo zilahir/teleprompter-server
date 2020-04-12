@@ -5,6 +5,7 @@ const uuid = require('uuid');
 
 exports.login = (req, res) => {
     try {
+        console.log('req', req)
         let refreshId = req.body.userId + jwtSecret;
         let salt = crypto.randomBytes(16).toString('base64');
         let hash = crypto.createHmac('sha512', salt).update(refreshId).digest("base64");
@@ -17,6 +18,7 @@ exports.login = (req, res) => {
             refreshToken: refresh_token,
             userId: req.body.userId,
             email: req.body.email,
+            username: req.body.username,
             isSuccess: true,
         });
     } catch (err) {
