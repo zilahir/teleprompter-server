@@ -61,10 +61,14 @@ exports.findByPrompterId = slug => {
             slug
         }, function(err, prompter) {
             if(err) reject(err)
-            resolve({
-                isSuccess: true,
-                prompter
-            })
+            if (prompter) {
+                resolve({
+                    isSuccess: true,
+                    prompter
+                })
+            } else {
+                resolve()
+            }
         })
     })
 }
