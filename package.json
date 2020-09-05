@@ -19,6 +19,9 @@
     "server",
     "socker.io"
   ],
+  "engines": {
+    "node": "12.x"
+  },
   "author": "zilahir",
   "license": "ISC",
   "bugs": {
