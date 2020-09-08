@@ -35,34 +35,34 @@ server.listen(PORT, () => console.log(`Listen on *: ${PORT}`));
 
 io.on("connection", socket => {
     const { id } = socket.client;
-    console.log(`User connected: ${id}`);
+    // console.log(`User connected: ${id}`);
     socket.on("isPlaying", ({prompterId, isPlaying}) => {
-        console.log(`${id}: prompterId ${prompterId} isPlaying: ${isPlaying}`);
+        // console.log(`${id}: prompterId ${prompterId} isPlaying: ${isPlaying}`);
         io.emit("isPlaying", { prompterId, isPlaying });
     });
 
     socket.on("incSpeed", prompterId => {
-        console.debug("incSpeed", prompterId)
+        // console.debug("incSpeed", prompterId)
         io.emit("incSpeed", prompterId);
     });
 
     socket.on("decSpeed", prompterId => {
-        console.debug("decSpeed", prompterId)
+        // console.debug("decSpeed", prompterId)
         io.emit("decSpeed", prompterId);
     });
 
     socket.on("jumpUp", prompterId => {
-        console.debug("jumpUp", prompterId)
+        // console.debug("jumpUp", prompterId)
         io.emit("jumpUp", prompterId);
     });
 
     socket.on("jumpDown", prompterId => {
-        console.debug("jumpDown", prompterId)
+        // console.debug("jumpDown", prompterId)
         io.emit("jumpDown", prompterId);
     });
 
     socket.on("updatePrompter", updatedPrompter => {
-        console.debug("updatedPrompter", updatedPrompter)
+        // console.debug("updatedPrompter", updatedPrompter)
         io.emit("updatePrompter", updatedPrompter);
     });
 });
@@ -70,7 +70,7 @@ io.on("connection", socket => {
 io.sockets.on('connection', function(socket) {
     socket.on('room', function(room) {
       socket.join(room);
-      console.debug('room', room)
+      // console.debug('room', room)
     });
   });
 
