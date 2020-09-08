@@ -31,8 +31,6 @@ UsersRouter.routesConfig(app);
 PrompterRouter.routesConfig(app);
 EmailRouter.routesConfig(app);
 
-server.listen(PORT, () => console.log(`Listen on *: ${PORT}`));
-
 io.on("connection", socket => {
     const { id } = socket.client;
     // console.log(`User connected: ${id}`);
@@ -81,3 +79,8 @@ app.get('/', function (req, res) {
     })
 })
 
+if (process.env.NODE_ENV === 'development') {
+    server.listen(PORT, () => console.log(`Listen on *: ${PORT}`));
+} else {
+    module.exports.handler = serverless(app);
+}
