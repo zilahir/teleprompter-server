@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const server = require("http").Server(app);
 const bodyParser = require('body-parser');
+const serverless = require('serverless-http');
 const io = require("socket.io")(server);
 const UsersRouter = require('./users/routes.config');
 const PrompterRouter = require('./prompter/routes.config');
@@ -79,8 +80,6 @@ app.get('/', function (req, res) {
     })
 })
 
-if (process.env.NODE_ENV === 'development') {
-    server.listen(PORT, () => console.log(`Listen on *: ${PORT}`));
-} else {
-    module.exports.handler = serverless(app);
-}
+// server.listen(PORT, () => console.log(`Listen on *: ${PORT}`));
+
+module.exports.handler = serverless(app);
