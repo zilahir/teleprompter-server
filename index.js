@@ -76,10 +76,9 @@ io.sockets.on('connection', function(socket) {
 app.get('/', function (req, res) {
     res.send({
         isSuccess: true,
-        mongoUrl: process.env.MONGOURL,
     })
 })
 
-// server.listen(PORT, () => console.log(`Listen on *: ${PORT}`));
+server.listen(PORT, () => console.log(`Listen on *: ${PORT}`));
 
-module.exports.handler = serverless(app);
+// module.exports.handler = serverless(app);
