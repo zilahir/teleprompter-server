@@ -127,3 +127,21 @@ exports.patchPrompterNoAuth = (id, prompterData) => {
         });
     })
 };
+
+exports.getPrompterBySlugNoAuth = (slug) => {
+    return new Promise ((resolve, reject) => {
+        PrompterNoAuth.findOne({
+            slug
+        }, function(err, prompter) {
+            if (err) reject (err);
+            if (prompter) {
+                resolve({
+                    isSuccess: true,
+                    prompter
+                })
+            } else {
+                resolve()
+            }
+        })
+    })
+}

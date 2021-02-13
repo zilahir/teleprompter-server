@@ -79,6 +79,6 @@ app.get('/', function (req, res) {
     })
 })
 
-server.listen(PORT, () => console.log(`Listen on *: ${PORT}`));
+// server.listen(PORT, () => console.log(`Listen on *: ${PORT}`));
 
-// module.exports.handler = serverless(app);
+module.exports.handler = serverless(app);
