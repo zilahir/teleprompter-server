@@ -76,6 +76,8 @@ io.sockets.on('connection', function(socket) {
 app.get('/', function (req, res) {
     res.send({
         isSuccess: true,
+        isProduction: true,
+        version: "2.1",
     })
 })
 
