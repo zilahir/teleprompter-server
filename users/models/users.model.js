@@ -7,10 +7,6 @@ const userSchema = new Schema({
     username: String,
 });
 
-userSchema.virtual('id').get(function () {
-    return this._id.toHexString();
-});
-
 // Ensure virtual fields are serialised.
 userSchema.set('toJSON', {
     virtuals: true
@@ -124,15 +120,13 @@ exports.findPasswordRecovery = slug => {
 
 exports.resetPassword = (email, password) => {
     return new Promise((resolve, reject) => {
-        User.findOne({
-            email,
-        }, function (err, user) {
-            if (err) reject(err);
-            user.password = password
-            user.save(function (err, updatedUser) {
-                if (err) return reject(err);
-                resolve(updatedUser);
-            });
-        });
+        User.findOne({email}, function(err, foundUser) {
+            if(err) reject(err)
+            foundUser.password = password
+            foundUser.save(function (err, updatedUser) {
+                if (err) reject(err)
+                resolve(updatedUser)
+            })
+        })
     })
 };
