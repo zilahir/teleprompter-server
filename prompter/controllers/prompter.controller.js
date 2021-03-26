@@ -49,9 +49,18 @@ exports.modifyPrompterNoAuth = (req, res) => {
 exports.getPrompterBySlug = (req, res) => {
     PrompterModel.findByPrompterId(req.params.prompterId)
         .then(result => {
-            console.debug('result', result)
             res.status(200).send(result || {
                 isSuccess: false,
+            })
+        })
+}
+
+exports.getNoAuthPrompterBySlug = (req, res) => {
+    PrompterModel.getPrompterBySlugNoAuth(req.params.prompterId)
+        .then(result => {
+            res.status(200).send({
+                isSuccess: true,
+                ...result,
             })
         })
 }

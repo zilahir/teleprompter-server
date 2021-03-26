@@ -12,7 +12,7 @@ exports.routesConfig = function (app) {
     const HelperOptions = {
       from: '"prompter.me@noreply" <info@prompter.me>',
       to: req.body.username,
-      subject: 'demo',
+      subject: 'prompter-me – password recovery',
       template: 'forgotten_pw',
       context: {
         slug: recoveryObject.slug,

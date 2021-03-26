@@ -34,7 +34,7 @@ exports.routesConfig = function (app) {
         UsersController.getPasswordRecovery
     ])
     app.patch('/resetpassword/:email', [
-        ValidationMiddleware.validJWTNeeded,
+        // ValidationMiddleware.validJWTNeeded,
         UsersController.patchByEmail
     ]);
 };

@@ -3,10 +3,33 @@ const Schema = mongoose.Schema;
 
 const propmpterSchema = new Schema({
     slug: String,
-    text: String,
     meta: Schema.Types.Mixed,
     userId: String,
     projectName: String,
+    segments: [{
+        id: String,
+        segmentTitle: String,
+        segmentText: String,
+        segmentColor: String,
+        type: {
+            type: String
+        },
+	}],
+})
+
+const propmpterNoAuthSchema = new Schema({
+    slug: String,
+    meta: Schema.Types.Mixed,
+    projectName: String,
+    segments: [{
+        id: String,
+        segmentTitle: String,
+        segmentText: String,
+        segmentColor: String,
+        type: {
+            type: String
+        },
+	}],
 })
 
 propmpterSchema.set('toJSON', {
@@ -22,7 +45,7 @@ propmpterSchema.findByUserId = function (cb) {
 };
 
 const Prompter = mongoose.model('Prompter', propmpterSchema)
-const PrompterNoAuth = mongoose.model('PrompterNoAuth', propmpterSchema)
+const PrompterNoAuth = mongoose.model('PrompterNoAuth', propmpterNoAuthSchema)
 
 exports.inserPrompter = prompterData => {
     const prompter = new Prompter(prompterData)
@@ -104,3 +127,21 @@ exports.patchPrompterNoAuth = (id, prompterData) => {
         });
     })
 };
+
+exports.getPrompterBySlugNoAuth = (slug) => {
+    return new Promise ((resolve, reject) => {
+        PrompterNoAuth.findOne({
+            slug
+        }, function(err, prompter) {
+            if (err) reject (err);
+            if (prompter) {
+                resolve({
+                    isSuccess: true,
+                    prompter
+                })
+            } else {
+                resolve()
+            }
+        })
+    })
+}
