@@ -1,5 +1,6 @@
 const PrompterModel = require('../models/prompter.model')
 
+
 exports.insert = (req, res) => {
     PrompterModel.inserPrompter(req.body)
         .then(result => {
