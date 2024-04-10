@@ -34,7 +34,7 @@ EmailRouter.routesConfig(app);
 
 io.on("connection", socket => {
     const { id } = socket.client;
-    // console.log(`User connected: ${id}`);
+    console.log(`User connected: ${id}`);
     socket.on("isPlaying", ({prompterId, isPlaying}) => {
         // console.log(`${id}: prompterId ${prompterId} isPlaying: ${isPlaying}`);
         io.emit("isPlaying", { prompterId, isPlaying });
@@ -62,16 +62,10 @@ io.on("connection", socket => {
 
     socket.on("updatePrompter", updatedPrompter => {
         // console.debug("updatedPrompter", updatedPrompter)
+        console.log('updatePrompter', updatedPrompter)
         io.emit("updatePrompter", updatedPrompter);
     });
 });
-
-io.sockets.on('connection', function(socket) {
-    socket.on('room', function(room) {
-      socket.join(room);
-      // console.debug('room', room)
-    });
-  });
 
 app.get('/', function (req, res) {
     res.send({
